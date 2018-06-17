@@ -1,0 +1,25 @@
+<div id="loadingOverlay" *ngIf="loading">
+  <div id="loaderDiv">
+<div class="loader" *ngIf="loading"></div> 
+</div>
+</div>
+<div class="container">
+<div class="col-md-12">
+<form class="form-inline" #form="ngForm" (ngSubmit)="getDetails(form)">
+	<div class="form-group" style="width:70%;">
+		<label for="url">GitHub Repository URL:</label>
+		<input class="form-control" style="width:75%" type="text" required name="url" #url="ngModel" ngModel />
+	</div>
+	<button type="submit" [disabled]="!url.valid">Go</button>
+		<span class="alert alert-danger message" *ngIf="errorText">{{errorText}}</span>
+		<span class="alert alert-danger message" *ngIf="!url.valid  && (url.dirty || url.touched)">Enter the URL
+		</span>
+	
+	
+</form>
+</div>
+
+<div class="chart-div" *ngIf="barChartsData.length>0" >
+	<app-charts [barChartsData]="barChartsData"></app-charts>
+</div>
+</div>
