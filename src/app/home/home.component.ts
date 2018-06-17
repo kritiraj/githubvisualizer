@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   getDetails(event){
   	let url=event.form._value.url;
     let i=url.indexOf("github.com");
+    this.chartData=[]
     if(i!=-1){
     this.errorText="";
     this.loading=true;
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.path=this.path+'/';
     }
     this.getHttpDetails();
-    this.chartData=[]
+    
   }
   else{
     this.errorText="Not a Valid Github URL";
@@ -49,7 +50,7 @@ export class HomeComponent implements OnInit {
         else{
           console.log(data.json())
           this.loading=false;
-          this.barChartsData=[...this.chartData];
+          c=[...this.chartData];
           
         }
       },
