@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   	let url=event.form._value.url;
     let i=url.indexOf("github.com");
     this.chartData=[]
+    this.barChartsData=[]
     if(i!=-1){
     this.errorText="";
     this.loading=true;
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
         else{
           console.log(data.json())
           this.loading=false;
-          c=[...this.chartData];
+          this.barChartsData=[...this.chartData];
           
         }
       },
